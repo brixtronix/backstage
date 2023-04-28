@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit {{ show.title }}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="form-group" class="dflex">
+    <form action="/show/edit/{{ show.id }}" method="post" class="col-6 mx-auto">
+        <h2 class="text-center">Edit Show</h2>
+        {% with messages = get_flashed_messages(category_filter=['shows']) %}
+            {% if messages %}
+                {% for message in messages %}
+                <p>{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <input type="hidden" name="id" value={{show.id}}>
+        <div class="form-group">
+            <label for="title">Show Title:</label>
+            <input type="text" name="title"  class="form-control" value="{{ show.title }}">
+        </div>
+        <div class="form-group">
+            <label for="network">Network:</label>
+            <input type="text" name="network"  class="form-control" value="{{ show.network }}">
+        </div>
+        <div class="form-group">
+            <label for="release_date">Release Date:</label>
+            <input type="date" name="release_date"  class="form-control" value="{{ show.release_date }}">
+        </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <input type="text" name="description"  class="form-control" value="{{ show.description }}">
+        </div>
+        <input type="submit" value="Update Show" class="btn btn-success">
+        <a href="/dashboard" class="btn btn-info">Dashboard</a>
+    </form>
+    </div>
+</body>
+</html>

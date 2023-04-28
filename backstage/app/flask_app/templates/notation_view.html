@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Note</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="col-6 mx-auto dflex justify-content-center">
+        <div class="card" style="width: 40rem">
+		<h4 class="text-center" class="card-title">Viewing Notation</h4>
+            <div class="card-body">
+			<div class="header-content" class="mx-auto">
+				<p>Notation: {{ one_note.note }}</p>
+			</div>
+                <div>
+                    <h6 class="text-left"><span">Posted By: </span> {{- one_note.poster_name -}}</h6> 
+                </div>
+                <div>
+                    <a href="/home" class="btn btn-info">Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

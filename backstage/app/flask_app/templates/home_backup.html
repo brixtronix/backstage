@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ current_user.user_name }} Home</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-sm-3">
+
+            <div class="info-box">
+                <p class="text-center w-100 m-1">{{ current_user.user_name }}. {{ current_user.biography }} <br><a href="/home">{{ current_user.email }}</a></p>
+            </div>
+
+            <div class="info-box">
+                <div class="card w-100">
+                    <div class="card-header">
+                        <h5 class="card-title text-center"><a href="/save/project">{{ current_user.user_name }}'s Projects:</a></h5>
+                    </div>
+                    {% for one_project in all_projects %}
+                    <div class="card-body">
+                        <p>{{ one_project.name }}:</p><p>{{ one_project.description }}</p>
+                        <a href="/edit/project/{{ one_project.id }}" class="card-link">Edit</a>
+                        <a href="/delete/project" class="card-link">Delete</a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="info-box">
+                <div class="card w-100">
+                    <div class="card-header">
+                        <h5 class="card-title text-center"><a href="/save/chops">{{ current_user.user_name }}'s Chops:</a></h5>
+                    </div>
+                    <div class="card-body">
+                        {% for one_skill in all_chops %}
+                            <p>{{ one_skill.skill }}</p><p>{{ one_skill.studied_for }}</p>
+                            <a href="/edit/chops/{{ one_skill.id }}" class="card-link">Edit</a>
+                            <a href="/delete/chops" class="card-link">Delete</a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <div class="card w-100">
+                    <div class="card-header">
+                        <h5 class="card-title text-center"><a href="/save/release">{{ current_user.user_name }}'s Releases:</a></h5>
+                    </div>
+					<div class="card-body">
+                    {% for release in all_releases %}
+                        <p>Title: {{ release.title }}</p>
+                        <p>Description: {{ release.description }}</p>
+                        <p>Release Date: {{ release.release_date }}</p>
+                        <a href="/edit/release/{{ release.id }}" class="card-link">Edit</a>
+                        <a href="/delete/release" class="card-link">Delete</a>
+					</div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="info-box">
+                Box for Media
+            </div>
+        </div>
+
+        <div class="col-sm-7">
+            <div class="info-box">
+                <h3 class="text-center w-100">Welcome, {{ current_user.user_name }}!</h3><a href="/save/notation">Add a Notation</a>
+            </div>
+            <div class="info-box">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Notation</th>
+                                <th>Author</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for all_notes in all_notations %}
+                            <tr>
+                                <td>{{ all_notes.note }}</td>
+                                <td>{{ all_notes.poster.user_name }}</td>
+                                <td>
+                                    <a href="/view/notation/{{ all_notes.id }}">View</a>
+                                    {% if all_notes.poster.user_name == current_user.user_name %}
+                                    <a href="/edit/notation/{{ all_notes.id }}">Edit</a>
+                                    <a href="/notation/delete/{{ all_notes.id }}">Delete</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-2">
+            <div class="info-box">
+                <a href="/home" class="w-100"><img src="static\assets\backstagefakelogo.jpg" alt="Backstage Pass Home"  class="img-fluid"></a>
+                
+            </div>
+            <div class="info-box">
+                <p class="text-center">Some text here eventually about the nature of the app.</p>
+            </div>
+            <div class="info-box">
+                <a href="/logout" class="text-center">Logout</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

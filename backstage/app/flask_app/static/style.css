@@ -1,0 +1,35 @@
+/* global & all  */
+
+
+
+
+.row {
+    width: 100%;
+}
+
+
+
+/*
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+
+.info-box {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 5px;
+    padding: 5px;
+    border-style: solid;
+    border-color: greenyellow;
+    border-radius: 5px;
+    border-width: thin;
+}
+
+
+.col-sm-3, .col-sm-6 {
+    margin: 5px;
+}
+*/
